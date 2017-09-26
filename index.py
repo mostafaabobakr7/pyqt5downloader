@@ -6,6 +6,7 @@ from PyQt5.uic import loadUiType
 import pafy
 from os import path
 import sys , os
+import urllib.parse
 import urllib.request as ur
 import humanize
 from urllib.parse import *
@@ -101,7 +102,8 @@ class MainApp(QMainWindow,FORM_CLASS):
             # display file Name and type from a url
             disassembled = urlparse(self.lineEdit_4.text())
             filename, file_ext = splitext(basename(disassembled.path))
-            self.textBrowser_5.setText(filename + file_ext)
+            name = urllib.parse.unquote(filename)
+            self.textBrowser_5.setText(name + file_ext)
             self.textBrowser_2.setText(file_ext)
         except Exception:
             pass
