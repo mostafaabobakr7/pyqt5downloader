@@ -11,11 +11,11 @@ there are 3 sections : regular download , youtube video , youtube playlist
 
 -Youtube Video :
 
-![](images/v1.0playlist.jpg)
+![](images/v1.0youtube.jpg)
 
 -Playlist :
 
-![](images/v1.0youtube.jpg)
+![](images/v1.0playlist.jpg)
 
 as i mentioned this project still in progress 
 
