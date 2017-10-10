@@ -140,6 +140,7 @@ class MainApp(QMainWindow,FORM_CLASS):
     def playlist_search(self):
         url = self.lineEdit_13.text()
         playlist = pafy.get_playlist(url)
+        videos = playlist['items']
         length = str(len(playlist['items']))
         # Display playlist name:
         self.textBrowser_7.setText(playlist['title'])
@@ -198,6 +199,7 @@ class MainApp(QMainWindow,FORM_CLASS):
         self.textBrowser.setText("")
         self.textBrowser_5.setText("")
         self.textBrowser_2.setText("")
+        self.textBrowser_4.setText("")
         QApplication.processEvents()
 
     def youtube_download(self):
@@ -236,10 +238,17 @@ class MainApp(QMainWindow,FORM_CLASS):
         if totalsize>0:
             percent= read * 100 / totalsize
             self.progressBar_2.setValue(percent)
+        # display downloaded size:
+        downloaded_mb =humanize.naturalsize(blocknum * blocksize)
+        self.textBrowser_4.setText(downloaded_mb)
+        # display speed :
+
         QApplication.processEvents()
 
-    def youtube_progress(self):
-        pass
+    def youtube_progress(self, blocknum, blocksize, totalsize):
+        
+        QApplication.processEvents()
+
 
     def playlist_progress(self):
         pass
