@@ -5,7 +5,7 @@ from PyQt5.QtGui import *
 from PyQt5.uic import loadUiType
 import pafy
 from os import path
-import sys , os
+import sys , os , time
 import urllib.parse
 import urllib.request as ur
 import humanize
@@ -29,7 +29,7 @@ class MainApp(QMainWindow,FORM_CLASS):
     def handel_ui(self):
         # Main Window:
         self.setWindowTitle("Download Program v1.0")
-        self.setFixedSize(520,300)
+        # self.setFixedSize(520,300)
 
         # download:
         self.lineEdit_4.setPlaceholderText("Enter url here")
@@ -204,32 +204,53 @@ class MainApp(QMainWindow,FORM_CLASS):
 
     def youtube_download(self):
         url = self.lineEdit.text()
+        save_loc=self.lineEdit_2.text()
         v=pafy.new(url)
         st = v.allstreams
-        save_loc = self.lineEdit_2.text()
         quailty =self.comboBox.currentIndex()
-        down = st[quailty].download(filepath=save_loc)
+        # display speed and Downloaded:
+        def mycb(total, recvd, ratio, rate, eta):
+                self.progressBar.setValue((recvd*100)/total)
+                QApplication.processEvents()
+                self.label_4.setText(humanize.naturalsize(recvd))
+                self.label_3.setText(str(round(rate)) + " KB/S")
+                self.label_5.setText(humanize.naturalsize(total))
+        down = st[quailty].download(filepath=save_loc,quiet=True, callback=mycb)
         QMessageBox.information(self, "Download Completed", "the Download finished")
         QApplication.processEvents()
 
     def playlist_download(self):
         url = self.lineEdit_13.text()
-        save_loc=self.lineEdit_14.text()
         playlist = pafy.get_playlist(url)
         videos = playlist['items']
-
+        save_loc = self.lineEdit_14.text()
         os.chdir(save_loc)
+        QApplication.processEvents()
+        # create folder to download in check if folder exist with playlist name:
         if os.path.exists(str(playlist['title'])):
             os.chdir(str(playlist['title']))
+            QApplication.processEvents()
         else:
             os.mkdir(str(playlist['title']))
             os.chdir(str(playlist['title']))
-
-        for video in videos:
+            QApplication.processEvents()
+        # Download playlist:
+        for current,video in enumerate(videos,start=1):
             p = video['pafy']
             best = p.getbest(preftype='mp4')
-            best.download()
+            def mycb(total, recvd, ratio, rate, eta):
+                self.progressBar_7.setValue((recvd * 100) / total)
+                QApplication.processEvents()
+                self.label_9.setText(humanize.naturalsize(recvd))
+                self.label_14.setText(str(round(rate)) + " KB/S")
+                self.label_8.setText(humanize.naturalsize(total))
+                # display current video:
+                self.label_15.setText(str(current))
+                QApplication.processEvents()
+            best.download(quiet=True, callback=mycb)
+            QApplication.processEvents()
         QApplication.processEvents()
+
     # progress-bar handling:
     def download_progress(self, blocknum, blocksize, totalsize):
         # this is how progress bar act it needs these three arguments
@@ -241,17 +262,7 @@ class MainApp(QMainWindow,FORM_CLASS):
         # display downloaded size:
         downloaded_mb =humanize.naturalsize(blocknum * blocksize)
         self.textBrowser_4.setText(downloaded_mb)
-        # display speed :
-
         QApplication.processEvents()
-
-    def youtube_progress(self, blocknum, blocksize, totalsize):
-        
-        QApplication.processEvents()
-
-
-    def playlist_progress(self):
-        pass
 
 
 def main():

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>520</width>
-    <height>392</height>
+    <width>527</width>
+    <height>467</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -489,7 +489,7 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
        </font>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tab_2">
        <attribute name="title">
@@ -507,8 +507,6 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
         <property name="font">
          <font>
           <pointsize>-1</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
          </font>
         </property>
         <property name="text">
@@ -543,8 +541,6 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
         <property name="font">
          <font>
           <pointsize>-1</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
          </font>
         </property>
         <property name="toolTip">
@@ -664,8 +660,6 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
         <property name="font">
          <font>
           <pointsize>-1</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
          </font>
         </property>
         <property name="text">
@@ -798,8 +792,6 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
         <property name="font">
          <font>
           <pointsize>-1</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
          </font>
         </property>
         <property name="text">
@@ -810,7 +802,7 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>170</y>
+          <y>220</y>
           <width>480</width>
           <height>25</height>
          </rect>
@@ -829,7 +821,7 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
         <property name="geometry">
          <rect>
           <x>190</x>
-          <y>200</y>
+          <y>250</y>
           <width>120</width>
           <height>25</height>
          </rect>
@@ -837,8 +829,6 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
         <property name="font">
          <font>
           <pointsize>-1</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
          </font>
         </property>
         <property name="text">
@@ -885,8 +875,6 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
         <property name="font">
          <font>
           <pointsize>-1</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
          </font>
         </property>
         <property name="text">
@@ -979,6 +967,120 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
          </font>
         </property>
        </widget>
+       <widget class="QLabel" name="label">
+        <property name="geometry">
+         <rect>
+          <x>140</x>
+          <y>180</y>
+          <width>81</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Downloaded:</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_2">
+        <property name="geometry">
+         <rect>
+          <x>350</x>
+          <y>180</y>
+          <width>41</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Speed:</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_3">
+        <property name="geometry">
+         <rect>
+          <x>400</x>
+          <y>180</y>
+          <width>90</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_4">
+        <property name="geometry">
+         <rect>
+          <x>240</x>
+          <y>180</y>
+          <width>80</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_5">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>180</y>
+          <width>80</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_6">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>180</y>
+          <width>31</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>size:</string>
+        </property>
+       </widget>
       </widget>
       <widget class="QWidget" name="tab_3">
        <attribute name="title">
@@ -1012,8 +1114,6 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
         <property name="font">
          <font>
           <pointsize>-1</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
          </font>
         </property>
         <property name="text">
@@ -1040,7 +1140,7 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
         <property name="geometry">
          <rect>
           <x>190</x>
-          <y>200</y>
+          <y>250</y>
           <width>120</width>
           <height>25</height>
          </rect>
@@ -1048,8 +1148,6 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
         <property name="font">
          <font>
           <pointsize>-1</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
          </font>
         </property>
         <property name="text">
@@ -1068,8 +1166,6 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
         <property name="font">
          <font>
           <pointsize>-1</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
          </font>
         </property>
         <property name="text">
@@ -1090,7 +1186,7 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>170</y>
+          <y>220</y>
           <width>480</width>
           <height>25</height>
          </rect>
@@ -1178,6 +1274,158 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
          </font>
         </property>
        </widget>
+       <widget class="QLabel" name="label_7">
+        <property name="geometry">
+         <rect>
+          <x>140</x>
+          <y>180</y>
+          <width>81</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Downloaded:</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_8">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>180</y>
+          <width>80</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_9">
+        <property name="geometry">
+         <rect>
+          <x>240</x>
+          <y>180</y>
+          <width>80</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_11">
+        <property name="geometry">
+         <rect>
+          <x>350</x>
+          <y>180</y>
+          <width>41</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Speed:</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_13">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>180</y>
+          <width>31</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>size:</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_14">
+        <property name="geometry">
+         <rect>
+          <x>400</x>
+          <y>180</y>
+          <width>90</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_15">
+        <property name="geometry">
+         <rect>
+          <x>340</x>
+          <y>130</y>
+          <width>60</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_16">
+        <property name="geometry">
+         <rect>
+          <x>240</x>
+          <y>130</y>
+          <width>81</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Current Video:</string>
+        </property>
+       </widget>
        <zorder>lineEdit_14</zorder>
        <zorder>lineEdit_13</zorder>
        <zorder>pushButton_25</zorder>
@@ -1188,6 +1436,14 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
        <zorder>label_12</zorder>
        <zorder>textBrowser_8</zorder>
        <zorder>textBrowser_9</zorder>
+       <zorder>label_7</zorder>
+       <zorder>label_8</zorder>
+       <zorder>label_9</zorder>
+       <zorder>label_11</zorder>
+       <zorder>label_13</zorder>
+       <zorder>label_14</zorder>
+       <zorder>label_15</zorder>
+       <zorder>label_16</zorder>
       </widget>
      </widget>
     </item>
@@ -1198,7 +1454,7 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>520</width>
+     <width>527</width>
      <height>21</height>
     </rect>
    </property>
