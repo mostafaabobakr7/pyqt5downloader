@@ -239,55 +239,58 @@ class MainApp(QMainWindow, FORM_CLASS):
         url = self.lineEdit.text()
         save_loc = self.lineEdit_2.text()
         # check if url and save place is not empty:
-        if url != "" and save_loc != "":
-            # if url is playlist:
-            if  "&list=" in url:
-                playlist = pafy.get_playlist(url)
-                videos = playlist['items']
-                os.chdir(save_loc)
-                QApplication.processEvents()
-                # create folder to download in check if folder exist with playlist name:
-                if os.path.exists(str(playlist['title'])):
-                    os.chdir(str(playlist['title']))
+        try:
+            if url != "" and save_loc != "":
+                # if url is playlist:
+                if  "&list=" in url:
+                    playlist = pafy.get_playlist(url)
+                    videos = playlist['items']
+                    os.chdir(save_loc)
                     QApplication.processEvents()
-                else:
-                    os.mkdir(str(playlist['title']))
-                    os.chdir(str(playlist['title']))
-                    QApplication.processEvents()
-                # Download playlist:
-                for current, video in enumerate(videos, start=1):
-                    p = video['pafy']
-                    best = p.getbest(preftype='mp4')
+                    # create folder to download in check if folder exist with playlist name:
+                    if os.path.exists(str(playlist['title'])):
+                        os.chdir(str(playlist['title']))
+                        QApplication.processEvents()
+                    else:
+                        os.mkdir(str(playlist['title']))
+                        os.chdir(str(playlist['title']))
+                        QApplication.processEvents()
+                    # Download playlist:
+                    for current, video in enumerate(videos, start=1):
+                        p = video['pafy']
+                        best = p.getbest(preftype='mp4')
 
+                        def mycb(total, recvd, ratio, rate, eta):
+                            self.progressBar_7.setValue((recvd * 100) / total)
+                            QApplication.processEvents()
+                            self.label_4.setText(humanize.naturalsize(recvd))
+                            self.label_3.setText(str(round(rate)) + " KB/S")
+                            self.label_5.setText(humanize.naturalsize(total))
+                            # display current video:
+                            self.label_15.setText(str(current))
+                            QApplication.processEvents()
+
+                        best.download(quiet=True, callback=mycb)
+                        QApplication.processEvents()
+
+                # if it was video:
+                else:
+                    v = pafy.new(url)
+                    st = v.allstreams
+                    quailty = self.comboBox.currentIndex()
+                    # display speed and Downloaded:
                     def mycb(total, recvd, ratio, rate, eta):
-                        self.progressBar_7.setValue((recvd * 100) / total)
+                        self.progressBar.setValue((recvd * 100) / total)
                         QApplication.processEvents()
                         self.label_4.setText(humanize.naturalsize(recvd))
                         self.label_3.setText(str(round(rate)) + " KB/S")
                         self.label_5.setText(humanize.naturalsize(total))
-                        # display current video:
-                        self.label_15.setText(str(current))
-                        QApplication.processEvents()
-
-                    best.download(quiet=True, callback=mycb)
-                    QApplication.processEvents()
-
-            # if it was video:
+                    down = st[quailty].download(filepath=save_loc, quiet=True, callback=mycb)
+                    QMessageBox.information(self, "Download Completed", "the Download finished")
             else:
-                v = pafy.new(url)
-                st = v.allstreams
-                quailty = self.comboBox.currentIndex()
-                # display speed and Downloaded:
-                def mycb(total, recvd, ratio, rate, eta):
-                    self.progressBar.setValue((recvd * 100) / total)
-                    QApplication.processEvents()
-                    self.label_4.setText(humanize.naturalsize(recvd))
-                    self.label_3.setText(str(round(rate)) + " KB/S")
-                    self.label_5.setText(humanize.naturalsize(total))
-                down = st[quailty].download(filepath=save_loc, quiet=True, callback=mycb)
-                QMessageBox.information(self, "Download Completed", "the Download finished")
-        else:
-            pass
+                pass
+        except Exception:
+            QMessageBox.warning(self, "Download Error", "Enter a valid url and a proper save location")
         QApplication.processEvents()
 
     # progress-bar handling:
