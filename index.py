@@ -28,7 +28,7 @@ class MainApp(QMainWindow, FORM_CLASS):
         self.setupUi(self)
         self.handel_ui()
         self.handel_buttons()
-        self.lineEdit.installEventFilter(self)
+        # self.lineEdit.installEventFilter(self)
 
     def handel_ui(self):
         # Main Window:
@@ -89,17 +89,16 @@ class MainApp(QMainWindow, FORM_CLASS):
         QApplication.processEvents()
 
     # check clipboard for url:
-    def eventFilter(self, obj, event):
-        win32clipboard.OpenClipboard()
-        url = str(win32clipboard.GetClipboardData())
-        if url.startswith("https://www.youtube.com/"):
-            if obj == self.lineEdit and event.type() == QEvent.FocusIn:
-                self.lineEdit.setText(url)
-                win32clipboard.CloseClipboard()
-            QApplication.processEvents()
-
-        QApplication.processEvents()
-        return super(MainApp, self).eventFilter(obj, event)
+    # def eventFilter(self, obj, event):
+    #     win32clipboard.OpenClipboard()
+    #     url = str(win32clipboard.GetClipboardData())
+    #     if url.startswith("https://www.youtube.com/"):
+    #         if obj == self.lineEdit and event.type() == QEvent.FocusIn:
+    #             self.lineEdit.setText(url)
+    #             win32clipboard.CloseClipboard()
+    #         QApplication.processEvents()
+    #     QApplication.processEvents()
+    #     return super(MainApp, self).eventFilter(obj, event)
 
     def upwork(self):
         return webbrowser.open_new_tab("https://www.upwork.com/freelancers/~012320c27b0e56e249")
@@ -137,6 +136,17 @@ class MainApp(QMainWindow, FORM_CLASS):
         QApplication.processEvents()
 
     def youtube_search(self):
+        # reset progress bar and clear lineEdit for new search :
+        self.progressBar.setValue(0)
+        self.lineEdit_4.setText("")
+        self.lineEdit_3.setText("")
+        self.textBrowser_6.setText("")
+        self.textBrowser_7.setText("")
+        self.textBrowser_8.setText("")
+        self.textBrowser_10.setText("")
+        self.textBrowser_10.setText("")
+        self.label_10.clear()
+        self.comboBox.clear()
         url = self.lineEdit.text()
         # if it was a playlist:
         if url != "" and "&list=" in url:
@@ -206,78 +216,78 @@ class MainApp(QMainWindow, FORM_CLASS):
     def download(self):
         url = self.lineEdit_4.text()
         save_loc = self.lineEdit_3.text() + "/" + self.textBrowser_5.toPlainText()
-        # this error handling if user didn't place url or place path where to save
-        try:
-            ur.urlretrieve(url, save_loc, self.download_progress)
-            # trying to get downloaded file size during download and displaying it in textBrowser_4
-
-            # trying to measure download speed during download and displaying it in textBrowser_3
-
-        except Exception:
-            QMessageBox.warning(self, "Download Error", "Error Occurred ")
-        # message when download complete
-        QMessageBox.information(self, "Download Completed", "the Download finished")
-        # reset progress bar and clear lineEdit after download finished
-        self.progressBar_2.setValue(0)
-        self.lineEdit_4.setText("")
-        self.lineEdit_3.setText("")
-        self.textBrowser.setText("")
-        self.textBrowser_5.setText("")
-        self.textBrowser_2.setText("")
-        self.textBrowser_4.setText("")
+        if url != "" and save_loc != "":
+            # this error handling if user didn't place url or place path where to save
+            try:
+                ur.urlretrieve(url, save_loc, self.download_progress)
+                QMessageBox.information(self, "Download Completed", "the Download finished")
+                self.progressBar_2.setValue(0)
+                self.lineEdit_4.setText("")
+                self.lineEdit_3.setText("")
+                self.textBrowser.setText("")
+                self.textBrowser_5.setText("")
+                self.textBrowser_2.setText("")
+                self.textBrowser_4.setText("")
+            except Exception:
+                QMessageBox.warning(self, "Download Error", "Enter a valid url and a proper save location")
+            # reset progress bar and clear lineEdit after download finished
+        else:
+            pass
         QApplication.processEvents()
 
     def youtube_download(self):
         url = self.lineEdit.text()
-        # if url is playlist:
-        if "&list=" in url:
-            save_loc = self.lineEdit_2.text()
-            playlist = pafy.get_playlist(url)
-            videos = playlist['items']
-            os.chdir(save_loc)
-            QApplication.processEvents()
-            # create folder to download in check if folder exist with playlist name:
-            if os.path.exists(str(playlist['title'])):
-                os.chdir(str(playlist['title']))
+        save_loc = self.lineEdit_2.text()
+        # check if url and save place is not empty:
+        if url != "" and save_loc != "":
+            # if url is playlist:
+            if  "&list=" in url:
+                playlist = pafy.get_playlist(url)
+                videos = playlist['items']
+                os.chdir(save_loc)
                 QApplication.processEvents()
-            else:
-                os.mkdir(str(playlist['title']))
-                os.chdir(str(playlist['title']))
-                QApplication.processEvents()
-            # Download playlist:
-            for current, video in enumerate(videos, start=1):
-                p = video['pafy']
-                best = p.getbest(preftype='mp4')
+                # create folder to download in check if folder exist with playlist name:
+                if os.path.exists(str(playlist['title'])):
+                    os.chdir(str(playlist['title']))
+                    QApplication.processEvents()
+                else:
+                    os.mkdir(str(playlist['title']))
+                    os.chdir(str(playlist['title']))
+                    QApplication.processEvents()
+                # Download playlist:
+                for current, video in enumerate(videos, start=1):
+                    p = video['pafy']
+                    best = p.getbest(preftype='mp4')
 
+                    def mycb(total, recvd, ratio, rate, eta):
+                        self.progressBar_7.setValue((recvd * 100) / total)
+                        QApplication.processEvents()
+                        self.label_4.setText(humanize.naturalsize(recvd))
+                        self.label_3.setText(str(round(rate)) + " KB/S")
+                        self.label_5.setText(humanize.naturalsize(total))
+                        # display current video:
+                        self.label_15.setText(str(current))
+                        QApplication.processEvents()
+
+                    best.download(quiet=True, callback=mycb)
+                    QApplication.processEvents()
+
+            # if it was video:
+            else:
+                v = pafy.new(url)
+                st = v.allstreams
+                quailty = self.comboBox.currentIndex()
+                # display speed and Downloaded:
                 def mycb(total, recvd, ratio, rate, eta):
-                    self.progressBar_7.setValue((recvd * 100) / total)
+                    self.progressBar.setValue((recvd * 100) / total)
                     QApplication.processEvents()
                     self.label_4.setText(humanize.naturalsize(recvd))
                     self.label_3.setText(str(round(rate)) + " KB/S")
                     self.label_5.setText(humanize.naturalsize(total))
-                    # display current video:
-                    self.label_15.setText(str(current))
-                    QApplication.processEvents()
-
-                best.download(quiet=True, callback=mycb)
-                QApplication.processEvents()
-        # if it was video:
+                down = st[quailty].download(filepath=save_loc, quiet=True, callback=mycb)
+                QMessageBox.information(self, "Download Completed", "the Download finished")
         else:
-            save_loc = self.lineEdit_2.text()
-            v = pafy.new(url)
-            st = v.allstreams
-            quailty = self.comboBox.currentIndex()
-
-            # display speed and Downloaded:
-            def mycb(total, recvd, ratio, rate, eta):
-                self.progressBar.setValue((recvd * 100) / total)
-                QApplication.processEvents()
-                self.label_4.setText(humanize.naturalsize(recvd))
-                self.label_3.setText(str(round(rate)) + " KB/S")
-                self.label_5.setText(humanize.naturalsize(total))
-
-            down = st[quailty].download(filepath=save_loc, quiet=True, callback=mycb)
-            QMessageBox.information(self, "Download Completed", "the Download finished")
+            pass
         QApplication.processEvents()
 
     # progress-bar handling:
@@ -291,6 +301,8 @@ class MainApp(QMainWindow, FORM_CLASS):
         # display downloaded size:
         downloaded_mb = humanize.naturalsize(blocknum * blocksize)
         self.textBrowser_4.setText(downloaded_mb)
+        # display speed:
+
         QApplication.processEvents()
 
 
