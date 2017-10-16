@@ -278,10 +278,10 @@ class MainApp(QMainWindow, FORM_CLASS):
                         self.label_5.setText(humanize.naturalsize(total))
                         # display current video:
                         self.label_15.setText(str(current))
-                    best.download(filepath=save_loc,quiet=True, callback=mycb)
                     # make url and sav_location readonly to prevent pasting new url while download:
                     self.lineEdit.setReadOnly(True)
                     self.lineEdit_2.setReadOnly(True)
+                    best.download(filepath=save_loc,quiet=True, callback=mycb)
                     QApplication.processEvents()
             except Exception :
                 QMessageBox.warning(self, "Download Error", "Enter a valid Playlist url and a proper save location")
