@@ -239,8 +239,10 @@ class MainApp(QMainWindow, FORM_CLASS):
         url = self.lineEdit.text()
         save_loc = self.lineEdit_2.text()
         # check if url and save place is not empty:
-        try:
-            if url != "" and save_loc != "":
+        if url == "" and save_loc == "":
+            pass
+        else:
+            try:
                 # if url is playlist:
                 if  "&list=" in url:
                     playlist = pafy.get_playlist(url)
@@ -287,10 +289,8 @@ class MainApp(QMainWindow, FORM_CLASS):
                         self.label_5.setText(humanize.naturalsize(total))
                     down = st[quailty].download(filepath=save_loc, quiet=True, callback=mycb)
                     QMessageBox.information(self, "Download Completed", "the Download finished")
-            else:
-                pass
-        except Exception:
-            QMessageBox.warning(self, "Download Error", "Enter a valid url and a proper save location")
+            except Exception:
+                QMessageBox.warning(self, "Download Error", "Enter a valid url and a proper save location")
         QApplication.processEvents()
 
     # progress-bar handling:
