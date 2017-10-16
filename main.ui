@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>527</width>
-    <height>467</height>
+    <width>530</width>
+    <height>534</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,16 +18,7 @@
     <normaloff>icon/Network-Download-icon.png</normaloff>icon/Network-Download-icon.png</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true">QToolTip
-{
-     border: 1px solid black;
-     background-color: #ffa02f;
-     padding: 1px;
-     border-radius: 3px;
-     opacity: 100;
-}
-
-QWidget
+   <string notr="true">QWidget
 {
     color: #b1b1b1;
     background-color: #323232;
@@ -482,6 +473,9 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidget">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
       <property name="font">
        <font>
         <weight>75</weight>
@@ -802,7 +796,7 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>220</y>
+          <y>360</y>
           <width>480</width>
           <height>25</height>
          </rect>
@@ -821,7 +815,7 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
         <property name="geometry">
          <rect>
           <x>190</x>
-          <y>250</y>
+          <y>390</y>
           <width>120</width>
           <height>25</height>
          </rect>
@@ -838,9 +832,9 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
        <widget class="QComboBox" name="comboBox">
         <property name="geometry">
          <rect>
-          <x>140</x>
-          <y>130</y>
-          <width>250</width>
+          <x>10</x>
+          <y>226</y>
+          <width>280</width>
           <height>25</height>
          </rect>
         </property>
@@ -923,7 +917,7 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
         <property name="geometry">
          <rect>
           <x>140</x>
-          <y>70</y>
+          <y>90</y>
           <width>350</width>
           <height>28</height>
          </rect>
@@ -939,7 +933,7 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
         <property name="geometry">
          <rect>
           <x>140</x>
-          <y>100</y>
+          <y>190</y>
           <width>350</width>
           <height>28</height>
          </rect>
@@ -955,7 +949,7 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
         <property name="geometry">
          <rect>
           <x>400</x>
-          <y>130</y>
+          <y>226</y>
           <width>90</width>
           <height>28</height>
          </rect>
@@ -971,7 +965,7 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
         <property name="geometry">
          <rect>
           <x>140</x>
-          <y>180</y>
+          <y>320</y>
           <width>81</width>
           <height>21</height>
          </rect>
@@ -990,7 +984,7 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
         <property name="geometry">
          <rect>
           <x>350</x>
-          <y>180</y>
+          <y>320</y>
           <width>41</width>
           <height>21</height>
          </rect>
@@ -1009,7 +1003,7 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
         <property name="geometry">
          <rect>
           <x>400</x>
-          <y>180</y>
+          <y>320</y>
           <width>90</width>
           <height>21</height>
          </rect>
@@ -1028,7 +1022,7 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
         <property name="geometry">
          <rect>
           <x>240</x>
-          <y>180</y>
+          <y>320</y>
           <width>80</width>
           <height>21</height>
          </rect>
@@ -1047,7 +1041,7 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
         <property name="geometry">
          <rect>
           <x>50</x>
-          <y>180</y>
+          <y>320</y>
           <width>80</width>
           <height>21</height>
          </rect>
@@ -1066,7 +1060,7 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>180</y>
+          <y>320</y>
           <width>31</width>
           <height>21</height>
          </rect>
@@ -1079,133 +1073,13 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
         </property>
         <property name="text">
          <string>size:</string>
-        </property>
-       </widget>
-      </widget>
-      <widget class="QWidget" name="tab_3">
-       <attribute name="title">
-        <string>Download Playlist</string>
-       </attribute>
-       <widget class="QLineEdit" name="lineEdit_13">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>10</y>
-          <width>480</width>
-          <height>25</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="pushButton_25">
-        <property name="geometry">
-         <rect>
-          <x>430</x>
-          <y>40</y>
-          <width>60</width>
-          <height>25</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>-1</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>Browse</string>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="lineEdit_14">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>40</y>
-          <width>480</width>
-          <height>25</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="pushButton_26">
-        <property name="geometry">
-         <rect>
-          <x>190</x>
-          <y>250</y>
-          <width>120</width>
-          <height>25</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>-1</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>Start Download</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="pushButton_28">
-        <property name="geometry">
-         <rect>
-          <x>410</x>
-          <y>10</y>
-          <width>80</width>
-          <height>25</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>-1</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>Search</string>
-        </property>
-        <property name="icon">
-         <iconset>
-          <normaloff>icon/search-icon2.png</normaloff>icon/search-icon2.png</iconset>
-        </property>
-        <property name="checkable">
-         <bool>false</bool>
-        </property>
-        <property name="checked">
-         <bool>false</bool>
-        </property>
-       </widget>
-       <widget class="QProgressBar" name="progressBar_7">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>220</y>
-          <width>480</width>
-          <height>25</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="value">
-         <number>0</number>
         </property>
        </widget>
        <widget class="QTextBrowser" name="textBrowser_7">
         <property name="geometry">
          <rect>
           <x>140</x>
-          <y>70</y>
+          <y>140</y>
           <width>350</width>
           <height>28</height>
          </rect>
@@ -1215,186 +1089,15 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
           <weight>75</weight>
           <bold>true</bold>
          </font>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_12">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>70</y>
-          <width>120</width>
-          <height>90</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::Box</enum>
-        </property>
-        <property name="text">
-         <string>Thumbnail</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-       <widget class="QTextBrowser" name="textBrowser_8">
-        <property name="geometry">
-         <rect>
-          <x>400</x>
-          <y>130</y>
-          <width>90</width>
-          <height>28</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-       </widget>
-       <widget class="QTextBrowser" name="textBrowser_9">
-        <property name="geometry">
-         <rect>
-          <x>140</x>
-          <y>100</y>
-          <width>350</width>
-          <height>28</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_7">
-        <property name="geometry">
-         <rect>
-          <x>140</x>
-          <y>180</y>
-          <width>81</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>Downloaded:</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_8">
-        <property name="geometry">
-         <rect>
-          <x>50</x>
-          <y>180</y>
-          <width>80</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_9">
-        <property name="geometry">
-         <rect>
-          <x>240</x>
-          <y>180</y>
-          <width>80</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_11">
-        <property name="geometry">
-         <rect>
-          <x>350</x>
-          <y>180</y>
-          <width>41</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>Speed:</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_13">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>180</y>
-          <width>31</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>size:</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_14">
-        <property name="geometry">
-         <rect>
-          <x>400</x>
-          <y>180</y>
-          <width>90</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string/>
         </property>
        </widget>
        <widget class="QLabel" name="label_15">
         <property name="geometry">
          <rect>
-          <x>340</x>
-          <y>130</y>
-          <width>60</width>
-          <height>30</height>
+          <x>300</x>
+          <y>263</y>
+          <width>90</width>
+          <height>26</height>
          </rect>
         </property>
         <property name="font">
@@ -1410,10 +1113,10 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
        <widget class="QLabel" name="label_16">
         <property name="geometry">
          <rect>
-          <x>240</x>
-          <y>130</y>
+          <x>206</x>
+          <y>262</y>
           <width>81</width>
-          <height>30</height>
+          <height>25</height>
          </rect>
         </property>
         <property name="font">
@@ -1426,24 +1129,268 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
          <string>Current Video:</string>
         </property>
        </widget>
-       <zorder>lineEdit_14</zorder>
-       <zorder>lineEdit_13</zorder>
-       <zorder>pushButton_25</zorder>
-       <zorder>pushButton_26</zorder>
-       <zorder>pushButton_28</zorder>
-       <zorder>progressBar_7</zorder>
-       <zorder>textBrowser_7</zorder>
-       <zorder>label_12</zorder>
-       <zorder>textBrowser_8</zorder>
-       <zorder>textBrowser_9</zorder>
-       <zorder>label_7</zorder>
-       <zorder>label_8</zorder>
-       <zorder>label_9</zorder>
-       <zorder>label_11</zorder>
-       <zorder>label_13</zorder>
-       <zorder>label_14</zorder>
-       <zorder>label_15</zorder>
-       <zorder>label_16</zorder>
+       <widget class="QTextBrowser" name="textBrowser_8">
+        <property name="geometry">
+         <rect>
+          <x>400</x>
+          <y>263</y>
+          <width>90</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_33">
+        <property name="geometry">
+         <rect>
+          <x>140</x>
+          <y>70</y>
+          <width>80</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Video Name:</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_34">
+        <property name="geometry">
+         <rect>
+          <x>140</x>
+          <y>120</y>
+          <width>100</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Playlist Name:</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_35">
+        <property name="geometry">
+         <rect>
+          <x>140</x>
+          <y>170</y>
+          <width>100</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Author Name:</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_13">
+        <property name="geometry">
+         <rect>
+          <x>429</x>
+          <y>431</y>
+          <width>34</width>
+          <height>34</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>-1</pointsize>
+         </font>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="toolTip">
+         <string>Linkedin</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>icon/Linkedin.ico</normaloff>icon/Linkedin.ico</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_14">
+        <property name="geometry">
+         <rect>
+          <x>470</x>
+          <y>431</y>
+          <width>34</width>
+          <height>34</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>-1</pointsize>
+         </font>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="toolTip">
+         <string>Facebook</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>icon/facebook.ico</normaloff>icon/facebook.ico</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_15">
+        <property name="geometry">
+         <rect>
+          <x>387</x>
+          <y>431</y>
+          <width>34</width>
+          <height>34</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>-1</pointsize>
+         </font>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="toolTip">
+         <string>GitHub</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>icon/Github.ico</normaloff>icon/Github.ico</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_16">
+        <property name="geometry">
+         <rect>
+          <x>300</x>
+          <y>431</y>
+          <width>34</width>
+          <height>34</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>-1</pointsize>
+         </font>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="toolTip">
+         <string>UpWork</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>icon/upworkr.ico</normaloff>icon/upworkr.ico</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_7">
+        <property name="geometry">
+         <rect>
+          <x>220</x>
+          <y>431</y>
+          <width>80</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string> Find me at :</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_17">
+        <property name="geometry">
+         <rect>
+          <x>345</x>
+          <y>431</y>
+          <width>33</width>
+          <height>34</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>-1</pointsize>
+         </font>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="toolTip">
+         <string>Patreon</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>icon/patreon.ico</normaloff>icon/patreon.ico</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+       </widget>
       </widget>
      </widget>
     </item>
@@ -1454,7 +1401,7 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>527</width>
+     <width>530</width>
      <height>21</height>
     </rect>
    </property>
