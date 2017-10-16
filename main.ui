@@ -786,6 +786,8 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
         <property name="font">
          <font>
           <pointsize>-1</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
          </font>
         </property>
         <property name="text">
@@ -823,6 +825,8 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
         <property name="font">
          <font>
           <pointsize>-1</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
          </font>
         </property>
         <property name="text">
@@ -832,9 +836,9 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
        <widget class="QComboBox" name="comboBox">
         <property name="geometry">
          <rect>
-          <x>10</x>
+          <x>140</x>
           <y>226</y>
-          <width>280</width>
+          <width>250</width>
           <height>25</height>
          </rect>
         </property>
@@ -869,6 +873,8 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
         <property name="font">
          <font>
           <pointsize>-1</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
          </font>
         </property>
         <property name="text">
@@ -1389,6 +1395,25 @@ QCheckBox::indicator:disabled, QRadioButton::indicator:disabled
           <width>32</width>
           <height>32</height>
          </size>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_17">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>224</y>
+          <width>81</width>
+          <height>25</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Video Quality:</string>
         </property>
        </widget>
       </widget>
