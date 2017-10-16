@@ -47,6 +47,9 @@ class MainApp(QMainWindow, FORM_CLASS):
         self.textBrowser_4.setPlaceholderText("Downloaded ")
         self.textBrowser_3.setPlaceholderText("Speed ")
         # youtube:
+        # accept url that start with "https://www.youtube.com/" as link:
+
+
         self.lineEdit.setPlaceholderText("Enter url here")
         self.lineEdit.setStatusTip("Enter url here")
         self.lineEdit_2.setPlaceholderText("Choose Save Location")
@@ -138,43 +141,20 @@ class MainApp(QMainWindow, FORM_CLASS):
     def youtube_search(self):
         # reset progress bar and clear lineEdit for new search :
         self.progressBar.setValue(0)
-        self.lineEdit_4.setText("")
-        self.lineEdit_3.setText("")
-        self.textBrowser_6.setText("")
-        self.textBrowser_7.setText("")
-        self.textBrowser_8.setText("")
-        self.textBrowser_10.setText("")
-        self.textBrowser_10.setText("")
+        self.textBrowser_6.clear()
+        self.textBrowser_7.clear()
+        self.textBrowser_8.clear()
+        self.textBrowser_10.clear()
+        self.textBrowser_11.clear()
         self.label_10.clear()
         self.comboBox.clear()
 
         url = self.lineEdit.text()
-        # if it was a playlist:
-        if url != "" and "&list=" in url:
-            try:
-                playlist = pafy.get_playlist(url)
-                videos = playlist['items']
-                length = str(len(playlist['items']))
-                # Display playlist name:
-                self.textBrowser_7.setText(playlist['title'])
-                # Display playlist thumbnail:
-                playlistthumb = pafy.new(url)
-                imageurl = playlistthumb.thumb
-                imageurlopen = ur.urlopen(imageurl).read()
-                image = QtGui.QImage()
-                image.loadFromData(imageurlopen)
-                mypixmap = QtGui.QPixmap(image)
-                self.label_10.setPixmap(mypixmap)
-                # display number of videos:
-                self.textBrowser_8.setText(length + " " + "Videos")
-                # display author:
-                author = str(playlist['author'])
-                self.textBrowser_10.setText(author)
-            except Exception:
-                pass
-            QApplication.processEvents()
+        # if url is empty:
+        if url == "":
+            pass
         # if it was a video:
-        elif url != "":
+        elif "&list=" not in url:
             try:
                 v = pafy.new(url)
                 # Display video name:
@@ -197,6 +177,30 @@ class MainApp(QMainWindow, FORM_CLASS):
                     data = '{} {} {} {}'.format(s.mediatype, s.extension, s.quality, size)
                     self.comboBox.addItem(data)
                     QApplication.processEvents()
+            except Exception:
+                pass
+        # if it was a playlist:
+        elif "&list=" in url:
+            try:
+                playlist = pafy.get_playlist(url)
+                videos = playlist['items']
+                length = str(len(playlist['items']))
+                # Display playlist name:
+                self.textBrowser_7.setText(playlist['title'])
+                # Display playlist thumbnail:
+                playlistthumb = pafy.new(url)
+                imageurl = playlistthumb.thumb
+                imageurlopen = ur.urlopen(imageurl).read()
+                image = QtGui.QImage()
+                image.loadFromData(imageurlopen)
+                mypixmap = QtGui.QPixmap(image)
+                self.label_10.setPixmap(mypixmap)
+                # display number of videos:
+                self.textBrowser_8.setText(length + " " + "Videos")
+                # display author:
+                author = str(playlist['author'])
+                self.textBrowser_10.setText(author)
+                QApplication.processEvents()
             except Exception:
                 pass
             QApplication.processEvents()
@@ -243,9 +247,6 @@ class MainApp(QMainWindow, FORM_CLASS):
         if url == "" and save_loc == "":
             pass
         else:
-            # make url and sav_location readonly to prevent pasting new url while download:
-            self.lineEdit.setReadOnly(True)
-            self.lineEdit_2.setReadOnly(True)
             try:
                 # if url is playlist:
                 if "&list=" in url:
@@ -261,6 +262,9 @@ class MainApp(QMainWindow, FORM_CLASS):
                         os.mkdir(str(playlist['title']))
                         os.chdir(str(playlist['title']))
                         QApplication.processEvents()
+                    # make url and sav_location readonly to prevent pasting new url while download:
+                    self.lineEdit.setReadOnly(True)
+                    self.lineEdit_2.setReadOnly(True)
                     # Download playlist:
                     for current, video in enumerate(videos, start=1):
                         p = video['pafy']
@@ -283,7 +287,6 @@ class MainApp(QMainWindow, FORM_CLASS):
                     v = pafy.new(url)
                     st = v.allstreams
                     quailty = self.comboBox.currentIndex()
-
                     # display speed and Downloaded:
                     def mycb(total, recvd, ratio, rate, eta):
                         self.progressBar.setValue((recvd * 100) / total)
@@ -291,7 +294,11 @@ class MainApp(QMainWindow, FORM_CLASS):
                         self.label_4.setText(humanize.naturalsize(recvd))
                         self.label_3.setText(str(round(rate)) + " KB/S")
                         self.label_5.setText(humanize.naturalsize(total))
+                    # make url and sav_location readonly to prevent pasting new url while download:
+                    self.lineEdit.setReadOnly(True)
+                    self.lineEdit_2.setReadOnly(True)
                     down = st[quailty].download(filepath=save_loc, quiet=True, callback=mycb)
+
                     QMessageBox.information(self, "Download Completed", "the Download finished")
             except Exception:
                 QMessageBox.warning(self, "Download Error", "Enter a valid url and a proper save location")
