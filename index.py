@@ -147,6 +147,7 @@ class MainApp(QMainWindow, FORM_CLASS):
         self.textBrowser_10.setText("")
         self.label_10.clear()
         self.comboBox.clear()
+
         url = self.lineEdit.text()
         # if it was a playlist:
         if url != "" and "&list=" in url:
@@ -242,9 +243,12 @@ class MainApp(QMainWindow, FORM_CLASS):
         if url == "" and save_loc == "":
             pass
         else:
+            # make url and sav_location readonly to prevent pasting new url while download:
+            self.lineEdit.setReadOnly(True)
+            self.lineEdit_2.setReadOnly(True)
             try:
                 # if url is playlist:
-                if  "&list=" in url:
+                if "&list=" in url:
                     playlist = pafy.get_playlist(url)
                     videos = playlist['items']
                     os.chdir(save_loc)
@@ -274,12 +278,12 @@ class MainApp(QMainWindow, FORM_CLASS):
 
                         best.download(quiet=True, callback=mycb)
                         QApplication.processEvents()
-
                 # if it was video:
                 else:
                     v = pafy.new(url)
                     st = v.allstreams
                     quailty = self.comboBox.currentIndex()
+
                     # display speed and Downloaded:
                     def mycb(total, recvd, ratio, rate, eta):
                         self.progressBar.setValue((recvd * 100) / total)
