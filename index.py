@@ -200,6 +200,9 @@ class MainApp(QMainWindow, FORM_CLASS):
                 # display author:
                 author = str(playlist['author'])
                 self.textBrowser_10.setText(author)
+                # display qualities:
+
+
                 QApplication.processEvents()
             except Exception:
                 pass
@@ -248,13 +251,14 @@ class MainApp(QMainWindow, FORM_CLASS):
             pass
         else:
             try:
-                # if url is playlist:
+                # if url is playlist to download:
                 if "&list=" in url:
                     playlist = pafy.get_playlist(url)
                     videos = playlist['items']
+                    # take save location from lieEdit_2 and change directory to it , to create a folder in the next step
                     os.chdir(save_loc)
                     QApplication.processEvents()
-                    # create folder to download in check if folder exist with playlist name:
+                    # create folder to download in ,and check if folder exist with playlist name:
                     if os.path.exists(str(playlist['title'])):
                         os.chdir(str(playlist['title']))
                         QApplication.processEvents()
@@ -282,7 +286,8 @@ class MainApp(QMainWindow, FORM_CLASS):
 
                         best.download(quiet=True, callback=mycb)
                         QApplication.processEvents()
-                # if it was video:
+
+                # if it was video to download:
                 else:
                     v = pafy.new(url)
                     st = v.allstreams
